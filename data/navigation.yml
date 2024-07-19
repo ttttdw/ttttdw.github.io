@@ -1,9 +1,0 @@
-- name: 首页
-  link: /
-- name: 关于
-  link: /about/
-  sublinks:
-    - name: 我的项目
-      link: /projects/
-- name: 联系
-  link: /contact/
