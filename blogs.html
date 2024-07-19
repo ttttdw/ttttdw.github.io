@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="projects.html">我的项目</a></li>
+                <li><a href="blogs.html">我的博客</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>我的博客</h1>
+        <div id="blog-content">加载中...</div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 我的个人网站. 保留所有权利。</p>
+    </footer>
+
+    <script>
+        const blogContentDiv = document.getElementById('blog-content');
+
+        function loadMarkdown(file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(text => {
+                    blogContentDiv.innerHTML = marked(text);
+                })
+                .catch(error => {
+                    blogContentDiv.innerHTML = `<p>无法加载内容，请稍后再试。</p>`;
+                });
+        }
+
+        // 调用函数加载指定的Markdown文件
+        loadMarkdown('posts/my-first-post.md');
+    </script>
+</body>
+</html>
