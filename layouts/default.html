@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+            {% for item in site.data.navigation %}
+                <li>
+                    <a href="{{ item.link | relative_url }}">{{ item.name }}</a>
+                    {% if item.sublinks %}
+                        <ul>
+                        {% for sublink in item.sublinks %}
+                            <li><a href="{{ sublink.link | relative_url }}">{{ sublink.name }}</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        {{ content }}
+    </main>
+    
+    <footer>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. 保留所有权利。</p>
+    </footer>
+</body>
+</html>
